@@ -1,0 +1,172 @@
+Here are **instructional usage snippets** for your `LocalOllamaLLM` class. These show _how_ to use the class.
+
+---
+
+### 🧩 1. **Basic Setup**
+
+```python
+# Step 1: Import your LocalOllamaLLM class
+from your_module.local_ollama_llm import LocalOllamaLLM
+
+# Step 2: Create an instance of the LLM
+llm = LocalOllamaLLM()
+
+# Step 3: Prepare your prompt
+prompt = "Explain the difference between TCP and UDP."
+
+# Step 4: Run the model on your prompt
+response = llm(prompt)
+
+# Step 5: Use the response
+print(response)
+```
+
+---
+
+### ⚙️ 2. **Set up Environment Variables**
+
+Create a `.env` file at the root of your project with:
+
+```env
+LOCAL_OLLAMA_API_ENDPOINT=http://localhost:11434/api/generate
+LOCAL_OLLAMA_MODEL_NAME=llama3
+```
+
+Ensure you load it with:
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+---
+
+### 🔁 3. **Using with LangChain Chains**
+
+```python
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from your_module.local_ollama_llm import LocalOllamaLLM
+
+llm = LocalOllamaLLM()
+
+prompt = PromptTemplate(
+    input_variables=["topic"],
+    template="Explain {topic} in simple terms."
+)
+
+chain = LLMChain(llm=llm, prompt=prompt)
+
+# To run the chain:
+# chain.run({"topic": "blockchain"})
+```
+
+---
+
+### 🧠 4. **Using as a Custom Tool in LangChain Agent**
+
+```python
+from langchain.tools import Tool
+from your_module.local_ollama_llm import LocalOllamaLLM
+
+llm = LocalOllamaLLM()
+
+# Wrap it as a tool
+local_llm_tool = Tool(
+    name="LocalOllama",
+    func=llm,
+    description="Useful for answering general knowledge or conceptual questions."
+)
+
+# Include this in your agent tool list
+# tools = [local_llm_tool]
+```
+
+Here's a set of **instructional snippets** for using your `RemoteOllamaLLM` class — these guide **how** to use it.
+
+---
+
+## 🌐 RemoteOllamaLLM – Usage Instructions
+
+---
+
+### 🧩 1. **Basic Setup**
+
+```python
+# Step 1: Import the class
+from your_module.remote_ollama_llm import RemoteOllamaLLM
+
+# Step 2: Create an instance of the remote LLM
+llm = RemoteOllamaLLM()
+
+# Step 3: Define your input prompt
+prompt = "What are the advantages of renewable energy?"
+
+# Step 4: Get the model's response
+response = llm(prompt)
+
+# Step 5: Display the result
+print(response)
+```
+
+---
+
+### ⚙️ 2. **Set up Environment Variables**
+
+Create a `.env` file in the root of your project:
+
+```env
+OLLAMA_API_ENDPOINT=http://192.168.1.100:8000/generate
+OLLAMA_MODEL_NAME=gemma2:2b
+```
+
+Load it in your app before usage:
+
+```python
+from dotenv import load_dotenv
+load_dotenv()
+```
+
+---
+
+### 🔁 3. **Using with LangChain Chains**
+
+```python
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from your_module.remote_ollama_llm import RemoteOllamaLLM
+
+llm = RemoteOllamaLLM()
+
+# Define prompt
+prompt = PromptTemplate(
+    input_variables=["concept"],
+    template="Explain {concept} in one paragraph."
+)
+
+chain = LLMChain(llm=llm, prompt=prompt)
+
+# To use:
+# chain.run({"concept": "quantum computing"})
+```
+
+---
+
+### 🧠 4. **Using as a LangChain Tool**
+
+```python
+from langchain.tools import Tool
+from your_module.remote_ollama_llm import RemoteOllamaLLM
+
+llm = RemoteOllamaLLM()
+
+# Define as a tool
+remote_llm_tool = Tool(
+    name="RemoteLLM",
+    func=llm,
+    description="Use this tool for answering questions via a remote LLM server."
+)
+
+# Add this to your tools list in agents
+# tools = [remote_llm_tool]
+```
