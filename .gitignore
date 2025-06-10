@@ -47,6 +47,7 @@ venv.bak/
 # Build directories
 dist/
 build/
+memory/
 Delegent.egg-info
 
 test.py
