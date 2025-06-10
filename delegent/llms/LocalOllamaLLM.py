@@ -36,8 +36,8 @@ class LocalOllamaLLM(BaseChatModel):
             "stream": False,
             "num_ctx": 2048 # <--- ENSURE THIS IS PRESENT AND CORRECT
         }
-        print(f"Sending payload to Ollama: {payload}") # Debugging print
-        print(f"Ollama endpoint: {self.endpoint}")     # Debugging print
+        #print(f"Sending payload to Ollama: {payload}") # Debugging print
+        #print(f"Ollama endpoint: {self.endpoint}")     # Debugging print
 
         try:
             # Increase timeout just to see if it's a very slow first response
