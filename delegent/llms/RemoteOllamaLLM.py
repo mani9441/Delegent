@@ -42,7 +42,7 @@ class RemoteOllamaLLM(BaseChatModel):
             "model": self.model
         }
         try:
-            response = requests.post(self.endpoint, json=payload, timeout=15)
+            response = requests.post(self.endpoint, json=payload, timeout=30)
             response.raise_for_status()
             data = response.json()
             generated_text = data.get("generated_text")
