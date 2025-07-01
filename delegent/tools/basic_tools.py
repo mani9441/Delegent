@@ -14,7 +14,7 @@ class TimeInput(BaseModel):
 
 @tool(args_schema=TimeInput)
 def get_current_time(timezone: str) -> str:
-    """Returns the current system time in the specified timezone."""
+    """Returns the current system time and date in the specified timezone."""
     now = datetime.datetime.now()
     return f"Current {timezone} time: {now.strftime('%Y-%m-%d %H:%M:%S')}"
 
