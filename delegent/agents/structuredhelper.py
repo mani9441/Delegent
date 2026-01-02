@@ -12,8 +12,9 @@ from langchain_classic.tools import Tool
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from delegent.llms import RemoteOllamaLLM
-
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 class StructuredToolAgent:
     """
     A structured conversational agent using LangChain with user-defined tools and LLMs.
@@ -41,7 +42,7 @@ class StructuredToolAgent:
     def _default_llm(self) -> BaseChatModel:
         """Load and return the default Gemini model."""
         return ChatGoogleGenerativeAI(
-            model="gemini-2.0-flash-lite",
+            model= os.getenv('GEMINI_MODEL'),
             temperature=0.7
         )
 

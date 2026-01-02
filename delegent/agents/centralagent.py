@@ -13,6 +13,10 @@ from langchain_core.tools import BaseTool
 from langchain_classic.memory import ConversationBufferMemory
 from langchain_classic.base_memory import BaseMemory
 
+import os 
+from dotenv import load_dotenv
+load_dotenv()
+
 from delegent.agents.structuredhelper import StructuredToolAgent
 from delegent.llms import RemoteOllamaLLM
 from delegent.llms import LocalOllamaLLM
@@ -80,7 +84,7 @@ class DelegentConversationalAgent:
             return LocalOllamaLLM.LocalOllamaLLM()
         else:
             return ChatGoogleGenerativeAI(
-                model="gemini-2.0-flash-lite",
+                model= os.getenv('GEMINI_MODEL'),
                 temperature=0.7
             )
 
