@@ -5,13 +5,13 @@ warnings.filterwarnings("ignore")
 
 from typing import List, Optional
 from langchain_google_genai import ChatGoogleGenerativeAI
-from langchain.agents import initialize_agent
-from langchain.agents.agent_types import AgentType
-from langchain.tools import Tool
+from langchain_classic.agents import initialize_agent
+from langchain_classic.agents.agent_types import AgentType
+from langchain_classic.tools import Tool
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.tools import BaseTool
-from langchain.memory import ConversationBufferMemory
-from langchain_core.memory import BaseMemory
+from langchain_classic.memory import ConversationBufferMemory
+from langchain_classic.base_memory import BaseMemory
 
 from delegent.agents.structuredhelper import StructuredToolAgent
 from delegent.llms import RemoteOllamaLLM

@@ -4,11 +4,11 @@ import warnings
 warnings.filterwarnings("ignore")
 
 from typing import List, Optional
-from langchain.agents import initialize_agent
-from langchain.agents.agent_types import AgentType
-from langchain.tools.base import BaseTool
+from langchain_classic.agents import initialize_agent
+from langchain_classic.agents.agent_types import AgentType
+from langchain_classic.tools.base import BaseTool
 from langchain_core.language_models.chat_models import BaseChatModel
-from langchain.tools import Tool
+from langchain_classic.tools import Tool
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from delegent.llms import RemoteOllamaLLM
